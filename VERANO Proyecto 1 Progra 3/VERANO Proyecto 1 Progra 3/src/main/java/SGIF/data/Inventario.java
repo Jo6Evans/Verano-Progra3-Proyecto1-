@@ -1,5 +1,5 @@
 package SGIF.data;
-import SGIF.logic.*;
+import SGIF.Controller.*;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;

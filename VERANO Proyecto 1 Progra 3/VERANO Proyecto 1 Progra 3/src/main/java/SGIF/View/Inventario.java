@@ -3,8 +3,8 @@ package SGIF.View;
 import javax.swing.*;
 
 public class Inventario {
-    private JTabbedPane tabbedPane1;
-    private JPanel panel1;
+    private JTabbedPane tabbedPane;
+    private JPanel mainpanel;
     private JLabel ArticulocategoriaLabel;
     private JLabel ArticulosubCategoriaLabel;
     private JLabel ArticulocodigoLabel;
@@ -56,6 +56,8 @@ public class Inventario {
     private JButton SubCategoriabuscarButton;
     private JTable listadoSubcategoria;
     private JButton SubCategoriaguardarButton;
+    public void createUIComponents() {
 
+    }
 
 }
