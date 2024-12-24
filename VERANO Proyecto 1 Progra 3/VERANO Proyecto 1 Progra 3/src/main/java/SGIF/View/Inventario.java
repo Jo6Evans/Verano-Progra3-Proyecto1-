@@ -1,8 +1,10 @@
 package SGIF.View;
 
 import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Inventario {
+
     private JTabbedPane tabbedPane;
     private JPanel mainpanel;
     private JLabel ArticulocategoriaLabel;
@@ -56,8 +58,28 @@ public class Inventario {
     private JButton SubCategoriabuscarButton;
     private JTable listadoSubcategoria;
     private JButton SubCategoriaguardarButton;
+    private JButton CategoriaeditarButton;
+    private JButton SubCategoriaeditarButton;
+    private JButton ArticuloeditarButton;
+
     public void createUIComponents() {
 
     }
+
+    public JPanel getMainpanel() {
+        return mainpanel;
+    }
+
+
+    //Asi viene en un ejemplo del profe para mostrarlo, no funciona
+    public Inventario() {
+        JFrame frame = new JFrame("Inventario");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.add(splitPane);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
 
 }
