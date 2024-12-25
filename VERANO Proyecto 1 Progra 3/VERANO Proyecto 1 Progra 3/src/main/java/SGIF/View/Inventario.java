@@ -62,24 +62,28 @@ public class Inventario {
     private JButton SubCategoriaeditarButton;
     private JButton ArticuloeditarButton;
 
-    public void createUIComponents() {
+    public Inventario() {
+        // Crear el JFrame
+        JFrame frame = new JFrame("Inventario");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Asegurarte de que mainpanel está correctamente inicializado
+        if (mainpanel == null) {
+            throw new IllegalStateException("El panel principal (mainpanel) no está inicializado. Verifica el diseño en IntelliJ.");
+        }
+
+        // Configurar el JFrame
+        frame.setContentPane(mainpanel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     public JPanel getMainpanel() {
         return mainpanel;
     }
 
-
-    //Asi viene en un ejemplo del profe para mostrarlo, no funciona
-    public Inventario() {
-        JFrame frame = new JFrame("Inventario");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.add(splitPane);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
-
-
 }
