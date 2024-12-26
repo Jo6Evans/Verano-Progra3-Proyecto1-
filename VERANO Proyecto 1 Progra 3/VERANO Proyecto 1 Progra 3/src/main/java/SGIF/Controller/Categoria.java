@@ -1,16 +1,19 @@
 package SGIF.Controller;
-
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlID;
-
+import java.util.ArrayList;
 import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Categoria {
-    @XmlID
     String ID;
     String nombre;
     String descripcion;
     List<SubCategoria> subCategoria;
+
+    public String getID() { return ID;}
+    public void setID(String ID) { this.ID = ID;}
+    public String getNombre() { return nombre;}
+    public void setNombre(String nombre) { this.nombre = nombre;}
+    public String getDescripcion() { return descripcion;}
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion;}
+    public List<SubCategoria> getSubCategoria() { return subCategoria;}
+    public void SetSubCategoria(){this.subCategoria = new ArrayList<SubCategoria>();}
 }
