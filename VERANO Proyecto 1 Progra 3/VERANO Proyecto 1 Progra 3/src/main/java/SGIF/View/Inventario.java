@@ -2,6 +2,8 @@ package SGIF.View;
 
 import javax.swing.*;
 import javax.swing.JFrame;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Inventario {
 
@@ -77,6 +79,31 @@ public class Inventario {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        //Deshabilitar los tabs de Sub y Articulo
+        tabbedPane.setEnabledAt(1, false); // Subcategoría
+        tabbedPane.setEnabledAt(2, false); // Artículo
+
+
+        tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+
+                int selectedIndex = tabbedPane.getSelectedIndex();
+                // Si se selecciona Categoría
+                if (selectedIndex == 0) {
+                    tabbedPane.setEnabledAt(1, true);   // Habilitar Subcategoría
+
+                    // Si se selecciona Subcategoría
+                } else if (selectedIndex == 1) {
+                    tabbedPane.setEnabledAt(2, true);   // Habilitar Artículo
+                }
+            }
+        });
+
+
+
+
     }
 
     public JPanel getMainpanel() {
