@@ -17,7 +17,13 @@ import static java.awt.SystemColor.window;
 public class Main {
 
         public static void main(String[] args)throws ParserConfigurationException, IOException, SAXException {
-        // Crear el JFrame
+
+        ///Se generaban 2 interfaces al momento de correrlo y la que estaba extra era la comentada en el main
+        ///Entonces la comente y solamente llame la que ya existia en el View, ya solo sale una
+
+
+
+ /*       // Crear el JFrame
         JFrame frame = new JFrame("Inventario");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -31,12 +37,16 @@ public class Main {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+*/
+
+        // Crear una instancia de Inventario para mostrar el view
+        Inventario view = new Inventario();
+        view.getMainpanel().setVisible(true);
 
 
-
-
-        //Prueba para ver si funciona, al parecer si funciona wuuuu
-       /* ReadXMLFile parser = new ReadXMLFile();
+        //para probar el XML
+ /*       //Prueba para ver si funciona, al parecer si funciona wuuuu
+        ReadXMLFile parser = new ReadXMLFile();
         List<Categoria> categorias = parser.parseXML();
 
         for (Categoria categoria : categorias) {
@@ -50,8 +60,8 @@ public class Main {
                                 }
                         }
                 }
-        }*/
-
+        }
+*/
 
 
     }
