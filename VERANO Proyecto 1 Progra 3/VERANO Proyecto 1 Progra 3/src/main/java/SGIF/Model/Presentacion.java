@@ -1,4 +1,4 @@
-package SGIF.Controller;
+package SGIF.Model;
 
 public class Presentacion {
     String id;

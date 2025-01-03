@@ -1,6 +1,6 @@
 package SGIF.Controller;
 
-import org.w3c.dom.NodeList;
+import SGIF.Model.Articulo;
 
 import java.util.List;
 

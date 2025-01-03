@@ -1,6 +1,6 @@
-package SGIF.Controller;
+package SGIF.Model;
 
-import java.util.List;
+import SGIF.Controller.Listado;
 
 public class SubCategoria {
     private String ID;

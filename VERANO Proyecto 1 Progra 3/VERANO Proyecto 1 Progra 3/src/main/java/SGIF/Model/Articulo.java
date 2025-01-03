@@ -1,4 +1,4 @@
-package SGIF.Controller;
+package SGIF.Model;
 
 import java.util.List;
 

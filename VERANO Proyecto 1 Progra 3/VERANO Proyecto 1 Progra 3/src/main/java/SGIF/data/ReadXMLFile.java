@@ -1,6 +1,10 @@
 package SGIF.data;
 
 import SGIF.Controller.*;
+import SGIF.Model.Articulo;
+import SGIF.Model.Categoria;
+import SGIF.Model.Presentacion;
+import SGIF.Model.SubCategoria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
