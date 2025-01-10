@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<inventario>
+  <categoria ID="ALR">
+    <nombre>Abrasivos, limas y rebabeadores</nombre>
+    <descripcion>herramienta o una sustancia que, al combinarse con un esfuerzo mecánico, actúa sobre otros
+			materiales o superficies para modificar su acabado a través del desgaste
+		</descripcion>
+    <listasubcategoria>
+      <subcategoria ID="ADH">
+        <nombre>Adhesivos</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+      <subcategoria ID="ATC">
+        <nombre>Anticorrosivos</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+      <subcategoria ID="SLC">
+        <nombre>Silicones</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+    </listasubcategoria>
+  </categoria>
+  <categoria ID="HEL">
+    <nombre>Herramienta eléctrica</nombre>
+    <descripcion>aparatos accionados por una fuente de energía que generan movimiento o rotación y normalmente están
+			diseñadas para trabajos prolongado
+		</descripcion>
+    <listasubcategoria>
+      <subcategoria ID="ALA">
+        <nombre>Alambrica</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+      <subcategoria ID="INA">
+        <nombre>Inalambrica</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+    </listasubcategoria>
+  </categoria>
+  <categoria ID="HNE">
+    <nombre>Herramienta neumática</nombre>
+    <descripcion/>
+    <listasubcategoria>
+      <subcategoria ID="ESM">
+        <nombre>Esmeriladora</nombre>
+        <descripcion/>
+        <listado/>
+      </subcategoria>
+      <subcategoria ID="ACC">
+        <nombre>Accesorios</nombre>
+        <descripcion>Accesorios varios para herramienta neumática</descripcion>
+        <listado/>
+      </subcategoria>
+      <subcategoria ID="MAN">
+        <nombre>Manguera de Neopreno con conectores</nombre>
+        <descripcion>• Con coples machos. • Resisten Aceites, Gasolina, Grasa y Solventes. • Reforzadas con
+					cuerdas
+					de Rayón trenzadas para agregar resistencia. • Muy flexibles y resistentes en ambientes abrasivos o
+					corrosivos.
+				</descripcion>
+        <listado/>
+      </subcategoria>
+    </listasubcategoria>
+  </categoria>
+</inventario>
