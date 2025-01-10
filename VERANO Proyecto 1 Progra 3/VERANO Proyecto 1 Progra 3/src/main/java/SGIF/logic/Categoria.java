@@ -1,4 +1,4 @@
-package SGIF.Model;
+package SGIF.logic;
 
 import java.util.List;
 
@@ -8,6 +8,12 @@ public class Categoria {
     String descripcion;
     List<SubCategoria> subCategoria;
 
+    public Categoria(String ID, String nombre, String descripcion, List<SubCategoria> subCategoria) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.subCategoria = subCategoria;
+    }
     public String getID() {
         return ID;
     }

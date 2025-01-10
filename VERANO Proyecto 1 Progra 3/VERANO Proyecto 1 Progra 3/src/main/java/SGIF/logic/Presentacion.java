@@ -1,10 +1,15 @@
-package SGIF.Model;
+package SGIF.logic;
 
 public class Presentacion {
     String id;
     String unidad;
     String cantidad;
 
+    public Presentacion(String id, String unidad, String cantidad) {
+        this.id = id;
+        this.unidad = unidad;
+        this.cantidad = cantidad;
+    }
     public String getId() {
         return id;
     }

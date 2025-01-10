@@ -1,12 +1,19 @@
-package SGIF.Model;
+package SGIF.logic;
 
-import SGIF.Controller.Listado;
+import java.util.List;
 
 public class SubCategoria {
     private String ID;
     private String nombre;
     private String descripcion;
-    private Listado listadoArticulos;
+    private List<Articulo> listadoArticulos;
+
+    public SubCategoria(String ID, String nombre, String descripcion, List<Articulo> listadoArticulos) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.listadoArticulos = listadoArticulos;
+    }
 
     public String getID() {
         return ID;
@@ -16,7 +23,7 @@ public class SubCategoria {
         return nombre;
     }
 
-    public Listado getListadoArticulos() {
+    public List<Articulo> getListadoArticulos() {
         return listadoArticulos;
     }
 
@@ -32,7 +39,7 @@ public class SubCategoria {
         this.nombre = nombre;
     }
 
-    public void setListadoArticulos(Listado ListadoArticulos) {
+    public void setListadoArticulos(List<Articulo> ListadoArticulos) {
         this.listadoArticulos = ListadoArticulos;
     }
 

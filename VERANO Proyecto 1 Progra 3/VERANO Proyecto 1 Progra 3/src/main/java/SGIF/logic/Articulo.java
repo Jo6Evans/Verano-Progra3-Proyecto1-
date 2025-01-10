@@ -1,4 +1,4 @@
-package SGIF.Model;
+package SGIF.logic;
 
 import java.util.List;
 
@@ -9,6 +9,13 @@ public class Articulo {
     String Descripcion;
     List<Presentacion> presentacion;
 
+    public Articulo(String id, String marca, String nombre, String Descripcion, List<Presentacion> presentacion) {
+        this.id = id;
+        this.marca = marca;
+        this.nombre = nombre;
+        this.Descripcion = Descripcion;
+        this.presentacion = presentacion;
+    }
     public String getId() {
         return id;
     }
