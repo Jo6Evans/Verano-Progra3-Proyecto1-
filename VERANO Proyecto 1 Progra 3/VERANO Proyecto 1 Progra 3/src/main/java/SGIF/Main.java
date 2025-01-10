@@ -50,7 +50,6 @@ public class Main {
             }
 
         }
-
         try {
             xml.guardar(Categorias);
         } catch (ParserConfigurationException e) {
