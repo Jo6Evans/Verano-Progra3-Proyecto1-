@@ -118,7 +118,7 @@ public class ReadXMLFile {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             // initialize StreamResult with File object to save to file
-            StreamResult result = new StreamResult(new File("Categorias.xml"));
+            StreamResult result = new StreamResult(new File("inventario.xml"));
             DOMSource source = new DOMSource(doc);
             transformer.transform(source, result);
         } catch (ParserConfigurationException | TransformerException ex) {
