@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
+///AQUI VA UN MODEL COMO EL DEL LABORATORIO 05
 
 public class Model extends DefaultTableModel {
     private List<Categoria> Categorias;
