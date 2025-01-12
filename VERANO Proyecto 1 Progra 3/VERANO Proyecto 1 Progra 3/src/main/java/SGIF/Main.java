@@ -1,6 +1,8 @@
 package SGIF;
 
+import SGIF.Controller.Controller;
 import SGIF.Model.Model;
+import SGIF.View.InventarioView;
 import SGIF.data.ReadXMLFile;
 import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;
@@ -17,6 +19,15 @@ public class Main {
     public static void main(String[] args) throws ParserConfigurationException, TransformerException {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
+
+
+        InventarioView view = new InventarioView();
+        Controller controller = new Controller();
+        //controller.start(view);
+
+
+
+
         System.out.printf("Carga bien, escribe bien" + '\n');
 
        // Data data = new Data();

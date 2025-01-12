@@ -1,11 +1,13 @@
 package SGIF.View;
 
+import SGIF.Controller.Controller;
+
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Inventario {
+public class InventarioView {
 
     private JTabbedPane tabbedPane;
     private JPanel mainpanel;
@@ -64,7 +66,12 @@ public class Inventario {
     private JButton SubCategoriaeditarButton;
     private JButton ArticuloeditarButton;
 
-    public Inventario() {
+    private Controller controller;
+
+    public InventarioView() {
+
+        controller = new Controller();
+
         // Crear el JFrame
         JFrame frame = new JFrame("Inventario");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,6 +108,29 @@ public class Inventario {
             }
         });
 
+        ///Esto es lo que estoy usando para ver si funciona la parte del tab y si se muestra pero no muestra ni pio
+        /* controller.actualizarTablaCategorias();
+
+        tabbedPane.setEnabledAt(1, false); // Subcategoría
+        tabbedPane.setEnabledAt(2, false); // Artículo
+
+        listadoCategoria.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2 && listadoCategoria.getSelectedRow() != -1) {
+                    try {
+                        int selectedIndex = tabbedPane.getSelectedIndex();
+                            // Si se selecciona Categoría
+                            if (selectedIndex == 0) {
+                                tabbedPane.setEnabledAt(1, true);   // Habilitar Subcategoría
+                            }
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        });*/
 
 
 

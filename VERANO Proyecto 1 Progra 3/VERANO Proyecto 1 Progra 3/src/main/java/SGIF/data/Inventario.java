@@ -18,10 +18,28 @@ public class Inventario {
 
     public Inventario() {
         categorias = new ArrayList<>();
-        presentaciones = new ArrayList<>();
         subCategorias = new ArrayList<>();
+        articulos = new ArrayList<>();
+        presentaciones = new ArrayList<>();
     }
 
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+    public void setPresentaciones(List<Presentacion> presentaciones) {
+        this.presentaciones = presentaciones;
+    }
+
+    public void setSubCategorias(List<SubCategoria> subCategorias) {
+        this.subCategorias = subCategorias;
+    }
+
+    public void setArticulos(List<Articulo> articulos) {
+        this.articulos = articulos;
+    }
+
+    //GET
     public List<Categoria> getCategorias() {
         return categorias;
     }
