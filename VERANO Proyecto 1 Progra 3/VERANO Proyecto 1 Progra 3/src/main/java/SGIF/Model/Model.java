@@ -26,7 +26,8 @@ public class Model extends DefaultTableModel {
 ///Sus atributos son el inventario porque esa es la forma de acceder a los datos del XML
 ///La idea es que los tables agarren la informacion y se pongan sus valores pero no funca jaja
 
-/*private Inventario inventario;
+/*
+    private Inventario inventario;
     private JTable tablaCategoria = new JTable();
 
 
@@ -72,4 +73,6 @@ public class Model extends DefaultTableModel {
 
         // Asignar el nuevo modelo a la tabla
         tablaCategoria.setModel(model);
-    }*/
+    }
+
+    */

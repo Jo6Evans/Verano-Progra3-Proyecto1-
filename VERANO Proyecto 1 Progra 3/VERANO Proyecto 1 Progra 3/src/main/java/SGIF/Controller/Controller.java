@@ -13,7 +13,9 @@ public class Controller {
     ///EL start() es para iniciar el VIEW en el main.
     ///Los metodos TablaCategoria son para crear y actualizar la tabla pero ni se muestra la tabla jaja
 
-    /*private InventarioView inventarioView;
+    /*
+
+    private InventarioView inventarioView;
     private Model model;
     private static Inventario inventario;
 
@@ -49,6 +51,8 @@ public class Controller {
 
     public void actualizarTablaCategorias() {
         model.actualizarTablaCategorias();
-    }*/
+    }
+
+    */
 
 }

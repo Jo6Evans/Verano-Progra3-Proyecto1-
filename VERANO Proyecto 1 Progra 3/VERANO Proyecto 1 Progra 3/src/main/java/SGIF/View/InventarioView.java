@@ -88,8 +88,8 @@ public class InventarioView {
         frame.setVisible(true);
 
         //Deshabilitar los tabs de Sub y Articulo
-        tabbedPane.setEnabledAt(1, false); // Subcategoría
-        tabbedPane.setEnabledAt(2, false); // Artículo
+       /* tabbedPane.setEnabledAt(1, false); // Subcategoría
+        tabbedPane.setEnabledAt(2, false); // Artículo*/
 
 
         tabbedPane.addChangeListener(new ChangeListener() {
