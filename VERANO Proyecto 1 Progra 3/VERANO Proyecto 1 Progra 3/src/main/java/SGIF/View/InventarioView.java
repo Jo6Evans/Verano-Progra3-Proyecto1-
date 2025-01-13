@@ -66,6 +66,12 @@ public class InventarioView {
     private JButton SubCategoriaeditarButton;
     private JButton ArticuloeditarButton;
 
+    //tab acerca de
+    private JPanel AcercaDePanel;
+    private JLabel IntegrantesLabel;
+    private JLabel LetraAsignadaDeGrupo;
+    private JLabel InfoDelPrograma;
+
     private Controller controller;
 
     public InventarioView() {
