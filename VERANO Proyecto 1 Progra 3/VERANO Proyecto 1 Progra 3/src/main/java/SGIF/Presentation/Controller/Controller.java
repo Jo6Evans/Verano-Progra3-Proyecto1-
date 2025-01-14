@@ -1,8 +1,8 @@
-package SGIF.Controller;
+package SGIF.Presentation.Controller;
 
 /*import SGIF.logic.Categoria;
-import SGIF.Model.Model;
-import SGIF.View.InventarioView;
+import SGIF.Presentation.Model.Model;
+import SGIF.Presentation.Controller.Controller.View.InventarioView;
 import SGIF.data.Inventario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;*/

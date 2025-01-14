@@ -1,10 +1,9 @@
-package SGIF.Model;
+package SGIF.Presentation.Model;
 
 import SGIF.data.Inventario;
 import SGIF.logic.Categoria;
 
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 import java.util.List;
 
 ///AQUI VA UN MODEL COMO EL DEL LABORATORIO 05

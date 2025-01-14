@@ -16,6 +16,7 @@ public class Articulo {
         this.Descripcion = Descripcion;
         this.presentacion = presentacion;
     }
+
     public String getId() {
         return id;
     }
@@ -55,4 +56,9 @@ public class Articulo {
     public void setPresentacion(List<Presentacion> presentacion) {
         this.presentacion = presentacion;
     }
+    @Override
+    public String toString() {
+        return this.nombre + this.id;
+    }
+
 }

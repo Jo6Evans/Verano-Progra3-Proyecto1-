@@ -1,8 +1,8 @@
 package SGIF;
 
-import SGIF.Controller.Controller;
-import SGIF.Model.Model;
-import SGIF.View.InventarioView;
+import SGIF.Presentation.Controller.Controller;
+import SGIF.Presentation.Model.Model;
+import SGIF.Presentation.View.InventarioView;
 import SGIF.data.ReadXMLFile;
 import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;

@@ -1,6 +1,6 @@
-package SGIF.View;
+package SGIF.Presentation.View;
 
-import SGIF.Controller.Controller;
+import SGIF.Presentation.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -31,7 +31,7 @@ public class InventarioView {
     private JTable ListadoPanel;
     private JScrollPane PresentacionesScrollPanel;
     private JTable PresentacionesPanel;
-    private JButton ArticuloguardarTodoButton;
+    private JButton presentacionguardarTodoButton;
     private JLabel CategoriacodigoLabel;
     private JTextField CategoriacodigoTxtField;
     private JTextField CategorianombreTxtField;
@@ -62,15 +62,16 @@ public class InventarioView {
     private JButton SubCategoriabuscarButton;
     private JTable listadoSubcategoria;
     private JButton SubCategoriaguardarButton;
-    private JButton CategoriaeditarButton;
-    private JButton SubCategoriaeditarButton;
-    private JButton ArticuloeditarButton;
 
     //tab acerca de
     private JPanel AcercaDePanel;
     private JLabel IntegrantesLabel;
     private JLabel LetraAsignadaDeGrupo;
     private JLabel InfoDelPrograma;
+    private JLabel PresentacionIDLabel;
+    private JLabel capacidadCantidadLabel;
+    private JTextField presentacioncapacidadCantidadLabel;
+    private JTextField presentacionIDTxtField;
 
     private Controller controller;
 
