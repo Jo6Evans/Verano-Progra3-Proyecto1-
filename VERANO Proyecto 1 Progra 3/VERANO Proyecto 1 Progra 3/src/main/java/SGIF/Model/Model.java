@@ -1,5 +1,6 @@
 package SGIF.Model;
 
+import SGIF.data.Inventario;
 import SGIF.logic.Categoria;
 
 import javax.swing.table.DefaultTableModel;
@@ -9,17 +10,25 @@ import java.util.List;
 ///AQUI VA UN MODEL COMO EL DEL LABORATORIO 05
 
 public class Model extends DefaultTableModel {
-    private List<Categoria> Categorias;
+    private Inventario data;
+    //llenar las columnas de las tablas
+    private String[] columnasCategorias = {"Codigo","Nombre","Descripcion"};
+    private String[] columnasSubCategorias = {"Codigo","Nombre","Descripcion"};
+    private String[] columnasArticulos = {"Codigo","Marca","Nombre","Descripcion"};
+    private String[] columnasPresentaciones = {"Codigo","Unidad","Cantidad"};
 
     public Model(){
-        Categorias = new ArrayList<>();
+        Inventario data = new Inventario();
     }
     public List<Categoria> getCategorias() {
-        return Categorias;
+        return data.getCategorias();
     }
     public void setCategorias(List<Categoria> categorias) {
-        Categorias = categorias;
+        data.setCategorias(categorias);
     }
+    public void cargarArchivo(){data.LoadXML();}
+
+
 }
 
 ///MODEL
