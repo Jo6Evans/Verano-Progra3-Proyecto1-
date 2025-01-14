@@ -23,51 +23,51 @@ public class Main {
 
         InventarioView view = new InventarioView();
         Controller controller = new Controller();
-        //controller.start(view);
+        controller.startApplication();
 
-
-
-
-        System.out.printf("Carga bien, escribe bien" + '\n');
-
-       // Data data = new Data();
-        ReadXMLFile xml = new ReadXMLFile();
-        Model model = new Model();
-        model.setCategorias(xml.cargarCategorias());
-
-        List<Categoria> Categorias = model.getCategorias();
-
-        for (Categoria categoria : Categorias) {
-            System.out.println("CATEGORIA");
-            System.out.println("ID:" + categoria.getID() + "  Nombre:" + categoria.getNombre() + "  Descripcion:" + categoria.getDescripcion());
-
-            List<SubCategoria> subCategorias = categoria.getSubCategoria();
-
-            for (SubCategoria subcategoria : subCategorias) {
-                System.out.println("\tSUB-CATEGORIA");
-                System.out.println("\tID:" + subcategoria.getID() + "  Nombre:" + subcategoria.getNombre() + "  Descripcion:" + subcategoria.getDescripcion());
-                List<Articulo> articulos = subcategoria.getListadoArticulos();
-
-                for (Articulo articulo : articulos) {
-                    System.out.println("\t\tARTICULO");
-                    System.out.println("\t\tID:" + articulo.getId() + " Marca: " + articulo.getMarca()+"  Nombre:" + articulo.getNombre() + "  Descripcion:" + articulo.getDescripcion());
-
-                    for(Presentacion presentacion : articulo.getPresentacion()){
-                        System.out.println("\t\t\tPRESENTACION");
-                        System.out.println("\t\t\tID:"+ presentacion.getId() + " Unidad:" + presentacion.getUnidad() + " Cantidad:"+ presentacion.getCantidad());
-                    }
-                }
-
-            }
-
-        }
-        try {
-            xml.guardar(Categorias);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (TransformerException e) {
-            throw new RuntimeException(e);
-        }
+//
+//
+//
+//        System.out.printf("Carga bien, escribe bien" + '\n');
+//
+//       // Data data = new Data();
+//        ReadXMLFile xml = new ReadXMLFile();
+//        Model model = new Model();
+//        model.setCategorias(xml.cargarCategorias());
+//
+//        List<Categoria> Categorias = model.getCategorias();
+//
+//        for (Categoria categoria : Categorias) {
+//            System.out.println("CATEGORIA");
+//            System.out.println("ID:" + categoria.getID() + "  Nombre:" + categoria.getNombre() + "  Descripcion:" + categoria.getDescripcion());
+//
+//            List<SubCategoria> subCategorias = categoria.getSubCategoria();
+//
+//            for (SubCategoria subcategoria : subCategorias) {
+//                System.out.println("\tSUB-CATEGORIA");
+//                System.out.println("\tID:" + subcategoria.getID() + "  Nombre:" + subcategoria.getNombre() + "  Descripcion:" + subcategoria.getDescripcion());
+//                List<Articulo> articulos = subcategoria.getListadoArticulos();
+//
+//                for (Articulo articulo : articulos) {
+//                    System.out.println("\t\tARTICULO");
+//                    System.out.println("\t\tID:" + articulo.getId() + " Marca: " + articulo.getMarca()+"  Nombre:" + articulo.getNombre() + "  Descripcion:" + articulo.getDescripcion());
+//
+//                    for(Presentacion presentacion : articulo.getPresentacion()){
+//                        System.out.println("\t\t\tPRESENTACION");
+//                        System.out.println("\t\t\tID:"+ presentacion.getId() + " Unidad:" + presentacion.getUnidad() + " Cantidad:"+ presentacion.getCantidad());
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        try {
+//            xml.guardar(Categorias);
+//        } catch (ParserConfigurationException e) {
+//            throw new RuntimeException(e);
+//        } catch (TransformerException e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
 

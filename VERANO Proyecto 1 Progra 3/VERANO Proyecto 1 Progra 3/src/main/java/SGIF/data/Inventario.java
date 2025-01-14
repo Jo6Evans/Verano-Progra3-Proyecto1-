@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Inventario {
 
-    private List categorias;
+    private List<Categoria> categorias;
 
     public Inventario() {
         categorias = new ArrayList<>();
@@ -35,12 +35,17 @@ public class Inventario {
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
         ReadXMLFile xmlPersistent = new ReadXMLFile();
+        try{
+            xmlPersistent.guardar(this.categorias);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     //GET
     public List<Categoria> getCategorias() {
-        return categorias;
+        return this.categorias;
     }
 
     //CRUD CATEGORIA
@@ -58,7 +63,22 @@ public class Inventario {
         if (c != null) return c;
         else throw new Exception("Categoria no existe");
     }
-
+    private Categoria readCategoriaConNombre(String nombre) {
+        for (Categoria categoria : getCategorias()) {
+            if (categoria.getNombre().equals(nombre)) {
+                return categoria;
+            }
+        }
+        return null;
+    }
+    private Categoria readCategoriaConNombreOCodigo(String nombre, String codigo) {
+        for (Categoria categoria : getCategorias()) {
+            if (categoria.getNombre().equals(nombre) || categoria.getID().equals(codigo)) {
+                return categoria;
+            }
+        }
+        return null;
+    }
     public void updateCategoria(Categoria categoria) throws Exception {
         Categoria result = readCategoriaConCodigo(categoria.getID());
         if (result != null) {
@@ -75,6 +95,7 @@ public class Inventario {
             throw new Exception("El categoria tiene subcategorias");
         }else{
             getCategorias().remove(categoria);
+
         }
     }
 
