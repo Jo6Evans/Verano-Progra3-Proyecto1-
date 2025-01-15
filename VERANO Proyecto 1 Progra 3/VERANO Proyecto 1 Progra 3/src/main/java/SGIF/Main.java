@@ -14,7 +14,6 @@ import javax.xml.transform.TransformerException;
 
 import java.util.List;
 
-
 public class Main {
     public static void main(String[] args) throws ParserConfigurationException, TransformerException {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text

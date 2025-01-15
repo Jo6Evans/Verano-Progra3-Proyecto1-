@@ -71,6 +71,12 @@ public class Controller {
         model.searchArt(id, nombre);
     }
 
+    //GUARDAR
+    public void guardarCat(Categoria categoria) throws Exception {
+        model.getCategorias();
+        model.guardarCategoria(categoria);
+    }
+
 
 }
 

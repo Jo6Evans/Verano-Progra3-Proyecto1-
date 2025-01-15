@@ -21,7 +21,7 @@ public class Model {
     //llenar las columnas de las tablas
     private List<SubCategoria> subcategorias;
     private List<Articulo> articulos;
-    private List<Categoria> categorias;
+    //private List<Categoria> categorias;
     private List<Presentacion> presentaciones;
     public void cargarArchivo() {
         data.LoadXML();
@@ -34,15 +34,15 @@ public class Model {
     public List<Categoria> getCategorias() {
         return data.getCategorias();
     }
+
     public List<SubCategoria> cargarSubCategorias(Categoria categoriaSeleccionada) {
         this.subcategorias = categoriaSeleccionada.getSubCategoria();
         return this.subcategorias;
     }
 
     public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+        data.setCategorias(categorias);
     }
-
 
     public void setSubCategorias(List<SubCategoria> subcategoria) {
         this.subcategorias = subcategoria;
@@ -81,15 +81,6 @@ public class Model {
         return this.presentaciones;
     }
 
-    Presentacion guardarPresentacion(Presentacion presentacion) {
-        for (Presentacion p : this.presentaciones) {
-            if (p.getId().equals(presentacion.getId())) {
-                return null;
-            }
-        }
-        presentaciones.add(presentacion);
-        return presentacion;
-    }
     public Categoria getCategoriaAt(int rowIndex){
         return data.getCategorias().get(rowIndex);
     }
@@ -148,7 +139,7 @@ public class Model {
 
     public List<SubCategoria> searchSub(String id, String nombre) {
         List<SubCategoria> subCategoriasEncontradas = new ArrayList<>();
-        for (Categoria categoria : categorias) {
+        for (Categoria categoria : data.getCategorias()) {
             for (SubCategoria subCategoria : categoria.getSubCategoria()) {
                 if (subCategoria.getNombre().equalsIgnoreCase(id) || subCategoria.getNombre().equalsIgnoreCase(nombre)) {
                     subCategoriasEncontradas.add(subCategoria);
@@ -181,6 +172,60 @@ public class Model {
         }
         return presentEncontradas;
     }*/
+
+    //GUARDAR
+    public Categoria guardarCategoria(Categoria categoria) throws Exception {
+        for (Categoria c : data.getCategorias()) {
+            if (c.getID().equals(categoria.getID())) {
+                return null; //esto es si ya existe una categoria con el mismo ID
+            }
+        }
+        categoria.setSubcategorias(this.subcategorias);
+        //data.getCategorias().add(categoria);
+        data.createCategoria(categoria);
+        return categoria;
+    }
+
+    public List<SubCategoria> guardarSubCategoria(SubCategoria subcategoria) {
+        for (SubCategoria sc : subcategorias) {
+            if (sc.getID().equals(subcategoria.getID()) || sc.getNombre().equals(subcategoria.getNombre())) {
+                return null;
+            }
+        }
+        subcategoria.setListadoArticulos(articulos);
+        subcategorias.add(subcategoria);
+        setSubCategorias(subcategorias);
+        return subcategorias;
+    }
+
+    public List<Articulo> guardarArticulo(Articulo articulo) {
+        for (Articulo a : articulos) {
+            if (a.getId().equals(articulo.getId())) {
+                return null;
+            }
+        }
+        articulo.setPresentacion(this.presentaciones);
+        articulos.add(articulo);
+        setArticulos(articulos);
+        return articulos;
+    }
+
+    public List<Presentacion> guardarPresentacion(Presentacion presentacion) {
+        for (Presentacion p : this.presentaciones) {
+            if (p.getId().equals(presentacion.getId())) {
+                return null;
+            }
+        }
+        presentaciones.add(presentacion);
+        setPresentaciones(presentaciones);
+        return presentaciones;
+    }
+
+
+
+
+
+
 }
 
 /// MODEL

@@ -182,9 +182,16 @@ public class InventarioView {
         CategoriaguardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CategoriacodigoTxtField.setText("");
-                CategorianombreTxtField.setText("");
-                CategoriadescripcionTxtField.setText("");
+                try{
+                    String codigo = CategoriacodigoTxtField.getText();
+                    String nombre = CategorianombreTxtField.getText();
+                    String descripcion = CategoriadescripcionTxtField.getText();
+                    Categoria categoria = new Categoria(codigo, nombre, descripcion);
+                    controller.guardarCat(categoria);
+                    System.out.println("Categoria guardada con exito");
+                }catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);}
+
             }
         });
 

@@ -1,5 +1,6 @@
 package SGIF.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categoria {
@@ -7,7 +8,17 @@ public class Categoria {
     String nombre;
     String descripcion;
     List<SubCategoria> subCategoria;
+
     public Categoria(){}
+
+    //cosntruc nuevo para guardar, HACER EN LOS QUE TENGAN LISTAS
+    public Categoria(String i, String n, String d){
+        ID = i;
+        nombre = n;
+        descripcion = d;
+        subCategoria = new ArrayList<SubCategoria>();
+    }
+
     public Categoria(String ID, String nombre, String descripcion, List<SubCategoria> subCategoria) {
         this.ID = ID;
         this.nombre = nombre;
