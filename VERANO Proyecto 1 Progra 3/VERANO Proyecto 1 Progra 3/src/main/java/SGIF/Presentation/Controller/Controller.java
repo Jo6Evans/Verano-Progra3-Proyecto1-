@@ -6,7 +6,8 @@ import SGIF.Presentation.Controller.Controller.View.InventarioView;
 import SGIF.data.Inventario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;*/
-
+import java.util.ArrayList;
+import java.util.List;
 import SGIF.Presentation.Model.*;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.Presentation.View.InventarioView;
@@ -39,47 +40,28 @@ public class Controller {
     }
 
     public AbstractTableModel getModelCategorias() {
-        // Este metodo configura el modelo con las categorias actuales
         return new CategoriaTableModel(model.getCategorias());
-
     }
 
-    // Metodo para obtener el modelo de subcategorías
     public AbstractTableModel getModelSubCategorias(Categoria categoriaSeleccionada) {
-        // Cargamos las subcategorias según la categoria seleccionada
         return new SubCategoriaTableModel(model.cargarSubCategorias(categoriaSeleccionada));
     }
 
-    // Método para obtener el modelo de artículos
     public AbstractTableModel getModelArticulos(SubCategoria subCategoriaSeleccionada) {
-        // Cargamos los articulos segun la subcategoria seleccionada
         return new ArticuloTableModel(model.cargarArticulos(subCategoriaSeleccionada));
     }
 
-    // Metodo para obtener el modelo de presentaciones
     public AbstractTableModel getModelPresentaciones(Articulo articuloSeleccionado) {
-        // Cargamos las presentaciones correspondientes al articulo seleccionado
-       return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado));
-           }
-//    public void searchCategoria(String id, String nombre) {
-//        model.setCategorias(model.getCategorias());
-//        model.search(buscarCategoria);
-//    }
+        return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado));
+    }
+
 
 }
 
 
-
-
-
-
-
-
-
-
-    ///Controller, esta un JTabble porque supuestamente asi se puede iniciar pero no esta sirviendo (ProyectoSISE)
-    ///EL start() es para iniciar el VIEW en el main.
-    ///Los metodos TablaCategoria son para crear y actualizar la tabla pero ni se muestra la tabla jaja
+/// Controller, esta un JTabble porque supuestamente asi se puede iniciar pero no esta sirviendo (ProyectoSISE)
+/// EL start() es para iniciar el VIEW en el main.
+/// Los metodos TablaCategoria son para crear y actualizar la tabla pero ni se muestra la tabla jaja
 
     /*
     guardar cate(categoria c){

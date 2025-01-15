@@ -78,8 +78,8 @@ public class InventarioView {
     private JLabel InfoDelPrograma;
     private JLabel PresentacionIDLabel;
     private JLabel capacidadCantidadLabel;
-    private JTextField presentacioncapacidadCantidadLabel;
-    private JTextField presentacionIDTxtField;
+    private JTextField PresentacioncapacidadCantidadTxtField;
+    private JTextField PresentacionIDTxtField;
     private JPanel CategoriaJpanel;
     private JPanel articuloPanel;
     private JPanel SubCategoriaPanel;
@@ -117,8 +117,6 @@ public class InventarioView {
             }
         });
 
-        // 1. Tabla de Categorías
-
         listadoCategoria.setModel(controller.getModelCategorias());
 
         listadoCategoria.addMouseListener(new MouseAdapter() {
@@ -127,14 +125,13 @@ public class InventarioView {
                 int row = listadoCategoria.getSelectedRow();
                 if (row >= 0) {
                     Categoria categoria = controller.getModel().getCategoriaAt(row);
-                    SubCategoriaPanel.setEnabled(true);  // Habilitar subcategorías
+                    SubCategoriaPanel.setEnabled(true);
                     var newModel = controller.getModelSubCategorias(categoria);
-                    listadoSubcategoria.setModel(newModel);  // Actualizar subcategorías
+                    listadoSubcategoria.setModel(newModel);
                 }
             }
         });
 
-// 2. Tabla de Subcategorías
         listadoSubcategoria.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -144,7 +141,7 @@ public class InventarioView {
                     if (selectedCategoryRow >= 0) {
                         Categoria categoriaSeleccionada = controller.getModel().getCategoriaAt(selectedCategoryRow);
                         SubCategoria subCategoria = controller.getModel().getSubCategoriaAt(row, categoriaSeleccionada);
-                        listadoArticuloPanel.setEnabled(true); // Habilitar panel de articulos
+                        listadoArticuloPanel.setEnabled(true);
                         listadoArticuloPanel.setModel(controller.getModelArticulos(subCategoria));
                     } else {
                         System.out.println("No se ha seleccionado ninguna categoría.");
@@ -154,16 +151,14 @@ public class InventarioView {
         });
 
 
-// 3. Tabla de Artículos
         listadoArticuloPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int row = listadoArticuloPanel.getSelectedRow();
                 if (row >= 0) {
-                    // Obtener la subcategoría seleccionada
+
                     SubCategoria subCategoriaSeleccionada = controller.getModel().getSubCategoriaAt(listadoSubcategoria.getSelectedRow(),
                             controller.getModel().getCategoriaAt(listadoCategoria.getSelectedRow()));
-                    // Obtener el artículo seleccionado
                     Articulo articulo = controller.getModel().getArticuloAt(row, subCategoriaSeleccionada);
                     listadoPresentacionesPanel.setEnabled(true); // Habilitar panel de presentaciones
                     listadoPresentacionesPanel.setModel(controller.getModelPresentaciones(articulo)); // Actualizar presentaciones
@@ -171,19 +166,15 @@ public class InventarioView {
             }
         });
 
-// 4. Tabla de Presentaciones
         listadoPresentacionesPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int row = listadoPresentacionesPanel.getSelectedRow();
                 if (row >= 0) {
-                    // Obtener el artículo seleccionado
                     Articulo articuloSeleccionado = controller.getModel().getArticuloAt(listadoArticuloPanel.getSelectedRow(),
                             controller.getModel().getSubCategoriaAt(listadoSubcategoria.getSelectedRow(),
                                     controller.getModel().getCategoriaAt(listadoCategoria.getSelectedRow())));
-                    // Obtener la presentación seleccionada
                     Presentacion presentacion = controller.getModel().getPresentacionAt(row, articuloSeleccionado);
-                    // Aquí puedes hacer lo que necesites con la presentación seleccionada
                 }
             }
         });
@@ -191,9 +182,13 @@ public class InventarioView {
         CategoriaguardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CategoriacodigoTxtField.setText("");
+                CategorianombreTxtField.setText("");
+                CategoriadescripcionTxtField.setText("");
             }
         });
+
+
         CategoriabuscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -206,6 +201,37 @@ public class InventarioView {
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+        categoriaLimpiarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        subCategoriaLimpiarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SubCategoriacodigoTxtField.setText("");
+                SubCategorianombreTxtField.setText("");
+                SubCategoriadescripcionTxtField.setText("");
+            }
+        });
+
+        articuloLimpiarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArticuloSubCategoriaTxtField.setText("");
+                ArticuloCodigoTxtField.setText("");
+                ArticuloDescripcionTxtField.setText("");
+            }
+        });
+        PresentacionLimpiarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PresentacionUnidadTxtField.setText("");
+                PresentacionIDTxtField.setText("");
+                PresentacioncapacidadCantidadTxtField.setText("");
             }
         });
     }

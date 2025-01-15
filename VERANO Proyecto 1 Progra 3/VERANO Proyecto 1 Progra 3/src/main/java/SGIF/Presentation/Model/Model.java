@@ -19,14 +19,13 @@ import java.util.stream.Collectors;
 public class Model {
     private Inventario data = new Inventario();
     //llenar las columnas de las tablas
-    private String[] columnasCategorias = {"Codigo", "Nombre", "Descripcion"};
-    private String[] columnasSubCategorias = {"Codigo", "Nombre", "Descripcion"};
-    private String[] columnasArticulos = {"Codigo", "Marca", "Nombre", "Descripcion"};
-    private String[] columnasPresentaciones = {"Codigo", "Unidad", "Cantidad"};
-    private List<Categoria> categorias;
     private List<SubCategoria> subcategorias;
     private List<Articulo> articulos;
+
     private List<Presentacion> presentaciones;
+    public void cargarArchivo() {
+        data.LoadXML();
+    }
 
     public Model() {
         Inventario data = new Inventario();
@@ -37,29 +36,18 @@ public class Model {
     }
     public List<SubCategoria> cargarSubCategorias(Categoria categoriaSeleccionada) {
         this.subcategorias = categoriaSeleccionada.getSubCategoria();
-//        if (subcategorias != null && !subcategorias.isEmpty()) {
-//           fireTableDataChanged();
-//        } else {
-//            System.out.println("No se han encontrado subcategorías.");
-//        }
-
         return this.subcategorias;
     }
     public List<Articulo> cargarArticulos(SubCategoria subcategoriaSeleccionada) {
         this.articulos=subcategoriaSeleccionada.getListadoArticulos();
         return this.articulos;
-       // fireTableDataChanged();
     }
     public List<Presentacion> cargarPresentaciones(Articulo articuloSeleccionado) {
         this.presentaciones = articuloSeleccionado.getPresentacion();
 
-      //  fireTableDataChanged();
         return this.presentaciones;
     }
-//    public void setCategorias(List<Categoria> categorias) {
-//        this.categorias = categorias;
-//        fireTableDataChanged();
-//    }
+
     Presentacion guardarPresentacion(Presentacion presentacion) {
         for (Presentacion p : this.presentaciones) {
             if (p.getId().equals(presentacion.getId())) {
@@ -67,54 +55,8 @@ public class Model {
             }
         }
         presentaciones.add(presentacion);
-        //fireTableDataChanged();
         return presentacion;
     }
-    public Categoria searchCategoria(String id, String nom){
-        for(Categoria cat: categorias){
-            if(data.getCategorias().get(0).getID().equals(id) || data.getCategorias().get(0).getNombre().equals(nom)){
-                categorias.add(cat);
-            }
-        }
-        return null;
-//        return data.getCategorias().stream()
-//                .filter(i->i.getNombre().contains(e.getNombre()))
-//                .sorted(Comparator.comparing(Categoria::getNombre))
-//                .collect(Collectors.toList());
-    }
-    public void cargarArchivo() {
-        data.LoadXML();
-    }
-
-    private enum TipoModelo {
-        CATEGORIA,
-        SUBCATEGORIA,
-        ARTICULO,
-        PRESENTACION,
-        NINGUNO
-    }
-
-    private TipoModelo getTipoModeloActivo() {
-        if (categorias != null) return TipoModelo.CATEGORIA;
-        if (subcategorias != null) return TipoModelo.SUBCATEGORIA;
-        if (articulos != null) return TipoModelo.ARTICULO;
-        if (presentaciones != null) return TipoModelo.PRESENTACION;
-        return TipoModelo.NINGUNO;
-    }
-
-    private String[] getColumnasActivas() {
-        switch (getTipoModeloActivo()) {
-            case CATEGORIA: return columnasCategorias;
-            case SUBCATEGORIA: return columnasSubCategorias;
-            case ARTICULO: return columnasArticulos;
-            case PRESENTACION: return columnasPresentaciones;
-            default: return new String[0];
-        }
-    }
-
-
-
-
     public Categoria getCategoriaAt(int rowIndex){
         return data.getCategorias().get(rowIndex);
     }
@@ -126,6 +68,38 @@ public class Model {
     }
     public Presentacion getPresentacionAt(int rowIndex, Articulo articuloSeleccionado){
         return articuloSeleccionado.getPresentacion().get(rowIndex);
+    }
+    public List<SubCategoria> searchSubCategorias(String id,String nom) {
+        List<SubCategoria> subCategoriasEncontradas = new ArrayList<>();
+        for(Categoria cat: getCategorias()){
+            for(SubCategoria sub : cat.getSubCategoria()){
+                if(sub.getNombre().equalsIgnoreCase(id)||sub.getNombre().equalsIgnoreCase(nom)){
+                    subCategoriasEncontradas.add(sub);
+                }
+            }
+        }
+        return subCategoriasEncontradas;
+    }
+    public List<Categoria> searchCategorias(String id, String nom) {
+        List<Categoria> categoriasEncontradas = new ArrayList<>();
+        for(Categoria cat: getCategorias()){
+            if(cat.getNombre().equalsIgnoreCase(id)||cat.getNombre().equalsIgnoreCase(nom)){
+                categoriasEncontradas.add(cat);
+            }
+        }
+        return categoriasEncontradas;
+    }
+    public boolean eliminarCategoria(Categoria categoria) throws Exception {
+       try{
+           data.deleteCategoria(categoria);
+           return true;
+       }catch(Exception e){
+           System.out.println("La categoria todavia tiene subcategorias");
+           return false;
+       }
+    }
+    public boolean eliminarSubCategoria(SubCategoria subCategoria) throws Exception {
+        return false;
     }
 }
 
