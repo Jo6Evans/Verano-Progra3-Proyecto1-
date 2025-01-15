@@ -32,13 +32,15 @@ public class Model extends AbstractTableModel {
     public List<Categoria> getCategorias() {
         return data.getCategorias();
     }
-    public void cargarSubCategorias(Categoria categoriaSeleccionada) {
+    public List<SubCategoria> cargarSubCategorias(Categoria categoriaSeleccionada) {
         this.subcategorias = categoriaSeleccionada.getSubCategoria();
         if (subcategorias != null && !subcategorias.isEmpty()) {
             fireTableDataChanged();
         } else {
             System.out.println("No se han encontrado subcategorías.");
         }
+
+        return this.subcategorias;
     }
     public void cargarArticulos(SubCategoria subcategoriaSeleccionada) {
         this.articulos=subcategoriaSeleccionada.getListadoArticulos();

@@ -7,7 +7,9 @@ import SGIF.data.Inventario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;*/
 
+import SGIF.Presentation.Model.CategoriaTableModel;
 import SGIF.Presentation.Model.Model;
+import SGIF.Presentation.Model.SubCategoriaTableModel;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.logic.Articulo;
@@ -40,15 +42,14 @@ public class Controller {
 
     public AbstractTableModel getModelCategorias() {
         // Este metodo configura el modelo con las categorias actuales
-        model.setCategorias(model.getCategorias()); // Aquí le pasamos las categorías actuales
-        return model;
+        return new CategoriaTableModel(model.getCategorias());
+
     }
 
     // Método para obtener el modelo de subcategorías
     public AbstractTableModel getModelSubCategorias(Categoria categoriaSeleccionada) {
         // Cargamos las subcategorias según la categoria seleccionada
-        model.cargarSubCategorias(categoriaSeleccionada);
-        return model;
+        return new SubCategoriaTableModel(model.cargarSubCategorias(categoriaSeleccionada));
     }
 
     // Método para obtener el modelo de artículos

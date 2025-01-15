@@ -1,6 +1,8 @@
 package SGIF.Presentation.View;
 
 import SGIF.Presentation.Controller.Controller;
+import SGIF.Presentation.Model.CategoriaTableModel;
+import SGIF.Presentation.Model.SubCategoriaTableModel;
 import SGIF.logic.Articulo;
 import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;
@@ -130,6 +132,7 @@ public class InventarioView {
             }
         });*/
         // 1. Tabla de Categorías
+
         listadoCategoria.setModel(controller.getModelCategorias());
 
         listadoCategoria.addMouseListener(new MouseAdapter() {
@@ -139,7 +142,8 @@ public class InventarioView {
                 if (row >= 0) {
                     Categoria categoria = controller.getModel().getCategoriaAt(row);
                     SubCategoriaPanel.setEnabled(true);  // Habilitar subcategorías
-                    listadoSubcategoria.setModel(controller.getModelSubCategorias(categoria));  // Actualizar subcategorías
+                    var newModel = controller.getModelSubCategorias(categoria);
+                    listadoSubcategoria.setModel(newModel);  // Actualizar subcategorías
                 }
             }
         });
