@@ -25,6 +25,7 @@ public class Controller {
 
     private Model model;
     private InventarioView view;
+    private CategoriaTableModel categoriaTableModel;
 
     public Controller() {
         model = new Model();
@@ -58,10 +59,26 @@ public class Controller {
     }
 
     //SEARCH
-    public void searchCategoria(String id, String nombre) {
-        model.setCategorias(model.getCategorias());
-        model.searchC(id, nombre);
+    /*public List<Categoria> searchCategoria(String id, String nombre) {
+        //model.setCategorias(model.getCategorias());
+        System.out.println("Controller -> Model");
+        return model.searchC(id, nombre);
     }
+  public void searchCategoria(Categoria buscarCategoria) {
+        System.out.println("Controller -> Model");
+        model.setCategorias(model.getCategorias());
+        model.searchCA(buscarCategoria);
+    }
+    }*/
+
+
+///MODIFIQUE SOLAMENTE CATEGORIA
+    public void searchCategoria(Categoria buscarCategoria) {
+        System.out.println("Controller -> Model");
+        List<Categoria> categoriasFiltradas = model.searchCA(buscarCategoria);
+        model.setCategorias(categoriasFiltradas);  // Actualizar el TableModel con las categorías filtradas
+    }
+
 
     public void searchSubcategoria(String id, String nombre) {
         model.setSubCategorias(model.getSubcategorias());

@@ -105,21 +105,10 @@ public class InventarioView {
         SubCategoriacategoriaTxtField.setEnabled(false);
         ArticuloCategoriaTxtField.setEnabled(false);
         ArticuloSubCategoriaTxtField.setEnabled(false);
-        tabbedPane.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
 
-                int selectedIndex = tabbedPane.getSelectedIndex();
-                // Si se selecciona Categoría
-                if (selectedIndex == 0) {
-                    tabbedPane.setEnabledAt(1, true);   // Habilitar Subcategoría
+        tabbedPane.setEnabledAt(1, false);
+        tabbedPane.setEnabledAt(2, false);
 
-                    // Si se selecciona Subcategoría
-                } else if (selectedIndex == 1) {
-                    tabbedPane.setEnabledAt(2, true);   // Habilitar Artículo
-                }
-            }
-        });
 
         listadoCategoria.setModel(controller.getModelCategorias());
 
@@ -132,6 +121,7 @@ public class InventarioView {
                     SubCategoriaPanel.setEnabled(true);
                     listadoSubcategoria.setModel(controller.getModelSubCategorias(categoria));
                     mostrarDatosCategoria(categoria);
+                    tabbedPane.setEnabledAt(1, true);
                 }
             }
         });
@@ -148,6 +138,7 @@ public class InventarioView {
                         listadoArticuloPanel.setEnabled(true);
                         listadoArticuloPanel.setModel(controller.getModelArticulos(subCategoria));
                         mostrarDatosSubCategoria(subCategoria);
+                        tabbedPane.setEnabledAt(2, true);
                     } else {
                         System.out.println("No se ha seleccionado ninguna categoría.");
                     }
@@ -256,8 +247,15 @@ public class InventarioView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
+
+                    ///ESTO ES LO NUEVO
+                    /*Categoria categoria = new Categoria();
+                    controller.searchCategoria(SubCategoriaIDBuscarTxtField.getText(), SubCategorianombreBuscarTxtField.getText());*/
                     Categoria categoria = new Categoria();
-                    controller.searchCategoria(SubCategoriaIDBuscarTxtField.getText(), SubCategorianombreBuscarTxtField.getText());
+                    categoria.setID(CategorianombreBuscarTxtField.getText());
+                    categoria.setNombre(CategorianombreBuscarTxtField.getText());
+                    controller.searchCategoria(categoria);
+                    System.out.println( "Solicitando busqueda");
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                 }

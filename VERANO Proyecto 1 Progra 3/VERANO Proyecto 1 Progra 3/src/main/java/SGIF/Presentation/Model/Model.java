@@ -23,6 +23,8 @@ public class Model {
     private List<Articulo> articulos;
     //private List<Categoria> categorias;
     private List<Presentacion> presentaciones;
+
+
     public void cargarArchivo() {
         data.LoadXML();
     }
@@ -93,7 +95,7 @@ public class Model {
     public Presentacion getPresentacionAt(int rowIndex, Articulo articuloSeleccionado){
         return articuloSeleccionado.getPresentacion().get(rowIndex);
     }
-    public List<SubCategoria> searchSubCategorias(String id,String nom) {
+    /*public List<SubCategoria> searchSubCategorias(String id,String nom) {
         List<SubCategoria> subCategoriasEncontradas = new ArrayList<>();
         for(Categoria cat: getCategorias()){
             for(SubCategoria sub : cat.getSubCategoria()){
@@ -109,10 +111,11 @@ public class Model {
         for(Categoria cat: getCategorias()){
             if(cat.getNombre().equalsIgnoreCase(id)||cat.getNombre().equalsIgnoreCase(nom)){
                 categoriasEncontradas.add(cat);
+                System.out.println("Categoria encontrada");
             }
         }
         return categoriasEncontradas;
-    }
+    }*/
     public boolean eliminarCategoria(Categoria categoria) throws Exception {
        try{
            data.deleteCategoria(categoria);
@@ -141,11 +144,27 @@ public class Model {
         data.deletePresentacion(articulo, presentacion);
     }
 
+
+
+
     //SEARCH
-    public List<Categoria> searchC(String id, String nombre){
+
+    //MODIFIQUE SOLAMENTE CATEGORIA
+   /* public List<Categoria> searchC(String id, String nombre){
+        System.out.println("Categoria encontrada");
+
         return data.getCategorias().stream()
                 .filter(i -> (id == null || i.getID().contains(id)) &&
                         (nombre == null || i.getNombre().contains(nombre)))
+                .sorted(Comparator.comparing(Categoria::getNombre))
+                .collect(Collectors.toList());
+    }*/
+
+
+    public List<Categoria> searchCA(Categoria e){
+        System.out.println("Categoria encontrada");
+        return data.getCategorias().stream()
+                .filter(i->i.getNombre().contains(e.getNombre()))
                 .sorted(Comparator.comparing(Categoria::getNombre))
                 .collect(Collectors.toList());
     }
