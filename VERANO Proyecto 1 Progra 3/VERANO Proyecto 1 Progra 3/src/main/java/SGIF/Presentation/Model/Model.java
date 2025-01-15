@@ -52,6 +52,7 @@ public class Model {
     }
     public List<Presentacion> cargarPresentaciones(Articulo articuloSeleccionado) {
         this.presentaciones = articuloSeleccionado.getPresentacion();
+
       //  fireTableDataChanged();
         return this.presentaciones;
     }

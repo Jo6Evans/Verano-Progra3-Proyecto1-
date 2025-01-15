@@ -86,6 +86,14 @@ public class InventarioView {
     private JPanel ArticuloPanel;
     private JLabel PresentacionUnidadLabel;
     private JTextField PresentacionUnidadTxtField;
+    private JButton categoriaEliminarButton;
+    private JButton categoriaLimpiarButton;
+    private JButton subCategoriaElminarButton;
+    private JButton subCategoriaLimpiarButton;
+    private JButton articuloEliminarButton;
+    private JButton articuloLimpiarButton;
+    private JButton PresentacionEliminarButton;
+    private JButton PresentacionLimpiarButton;
 
     private Controller controller;
 

@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class SubCategoriaTableModel extends AbstractTableModel {
-    private final String[] columnNames = {"ID", "Categoria ID", "Nombre"};
+    private final String[] columnNames = {"ID", "Nombre", "Descripcion"};
     private final List<SubCategoria> subcategorias;
 
     public SubCategoriaTableModel(List<SubCategoria> subcategorias) {

@@ -23,7 +23,10 @@ public class ArticuloTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return columnas.length;
     }
-
+    @Override
+    public String getColumnName(int column) {
+        return columnas[column];
+    }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Articulo articulo = articulos.get(rowIndex);

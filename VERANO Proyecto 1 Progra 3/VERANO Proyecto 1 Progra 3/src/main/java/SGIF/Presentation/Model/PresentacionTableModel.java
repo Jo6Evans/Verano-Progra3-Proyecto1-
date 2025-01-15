@@ -8,13 +8,12 @@ import java.util.List;
 
 public class PresentacionTableModel extends AbstractTableModel {
 
-    final String[] columnas = {"ID", "unidad", "cantidad"};
+    final String[] columnas = {"ID", "Unidad", "Cantidad"};
     private List<Presentacion> presentaciones;
 
     public PresentacionTableModel(List<Presentacion> presentaciones) {
         this.presentaciones = presentaciones;
     }
-
 
     @Override
     public int getRowCount() {
@@ -25,7 +24,10 @@ public class PresentacionTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return columnas.length;
     }
-
+    @Override
+    public String getColumnName(int column) {
+        return columnas[column];
+    }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Presentacion presentacion = presentaciones.get(rowIndex);

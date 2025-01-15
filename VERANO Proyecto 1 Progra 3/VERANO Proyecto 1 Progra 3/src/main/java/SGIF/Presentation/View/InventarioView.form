@@ -177,6 +177,24 @@
                       </scrollpane>
                     </children>
                   </grid>
+                  <component id="a2e51" class="javax.swing.JButton" binding="categoriaEliminarButton">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2212804"/>
+                      <foreground color="-16777216"/>
+                      <text value="Eliminar"/>
+                    </properties>
+                  </component>
+                  <component id="6fcba" class="javax.swing.JButton" binding="categoriaLimpiarButton">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Limpiar"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
               <hspacer id="9c4bb">
@@ -377,6 +395,24 @@
                       <text value="Guardar"/>
                     </properties>
                   </component>
+                  <component id="c92f4" class="javax.swing.JButton" binding="subCategoriaElminarButton">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2212804"/>
+                      <foreground color="-16777216"/>
+                      <text value="Eliminar"/>
+                    </properties>
+                  </component>
+                  <component id="48c80" class="javax.swing.JButton" binding="subCategoriaLimpiarButton">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Limpiar"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
               <hspacer id="d1402">
@@ -525,6 +561,24 @@
                               <text value="Descripcion"/>
                             </properties>
                           </component>
+                          <component id="c20c4" class="javax.swing.JButton" binding="articuloEliminarButton">
+                            <constraints>
+                              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-2212804"/>
+                              <foreground color="-16777216"/>
+                              <text value="Eliminar"/>
+                            </properties>
+                          </component>
+                          <component id="43f40" class="javax.swing.JButton" binding="articuloLimpiarButton">
+                            <constraints>
+                              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Limpiar"/>
+                            </properties>
+                          </component>
                         </children>
                       </grid>
                       <grid id="9aa41" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -606,7 +660,7 @@
                       </scrollpane>
                     </children>
                   </grid>
-                  <grid id="50770" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="50770" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -679,6 +733,24 @@
                           </grid>
                         </constraints>
                         <properties/>
+                      </component>
+                      <component id="5d00e" class="javax.swing.JButton" binding="PresentacionEliminarButton">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-2212804"/>
+                          <foreground color="-16777216"/>
+                          <text value="Eliminar"/>
+                        </properties>
+                      </component>
+                      <component id="9a95b" class="javax.swing.JButton" binding="PresentacionLimpiarButton">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Limpiar"/>
+                        </properties>
                       </component>
                     </children>
                   </grid>
