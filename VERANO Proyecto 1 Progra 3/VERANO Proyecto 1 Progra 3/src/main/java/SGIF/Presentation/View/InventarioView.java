@@ -1,6 +1,6 @@
 package SGIF.Presentation.View;
 
-import SGIF.Presentation.Controller.Controller;
+import SGIF.Presentation.Controller.*;
 import SGIF.logic.Articulo;
 import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;
@@ -94,13 +94,17 @@ public class InventarioView {
     private JButton articuloLimpiarButton;
     private JButton PresentacionEliminarButton;
     private JButton PresentacionLimpiarButton;
+    private JTextField ArticuloMarcaTxtField;
+    private JLabel ArticuloMarcaLabel;
 
     private Controller controller;
 
     public InventarioView() {
 
         controller = new Controller();
-
+        SubCategoriacategoriaTxtField.setEnabled(false);
+        ArticuloCategoriaTxtField.setEnabled(false);
+        ArticuloSubCategoriaTxtField.setEnabled(false);
         tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -126,8 +130,8 @@ public class InventarioView {
                 if (row >= 0) {
                     Categoria categoria = controller.getModel().getCategoriaAt(row);
                     SubCategoriaPanel.setEnabled(true);
-                    var newModel = controller.getModelSubCategorias(categoria);
-                    listadoSubcategoria.setModel(newModel);
+                    listadoSubcategoria.setModel(controller.getModelSubCategorias(categoria));
+                    mostrarDatosCategoria(categoria);
                 }
             }
         });
@@ -143,6 +147,7 @@ public class InventarioView {
                         SubCategoria subCategoria = controller.getModel().getSubCategoriaAt(row, categoriaSeleccionada);
                         listadoArticuloPanel.setEnabled(true);
                         listadoArticuloPanel.setModel(controller.getModelArticulos(subCategoria));
+                        mostrarDatosSubCategoria(subCategoria);
                     } else {
                         System.out.println("No se ha seleccionado ninguna categoría.");
                     }
@@ -162,6 +167,7 @@ public class InventarioView {
                     Articulo articulo = controller.getModel().getArticuloAt(row, subCategoriaSeleccionada);
                     listadoPresentacionesPanel.setEnabled(true); // Habilitar panel de presentaciones
                     listadoPresentacionesPanel.setModel(controller.getModelPresentaciones(articulo)); // Actualizar presentaciones
+                    mostrarDatosArticulo(articulo);
                 }
             }
         });
@@ -175,11 +181,14 @@ public class InventarioView {
                             controller.getModel().getSubCategoriaAt(listadoSubcategoria.getSelectedRow(),
                                     controller.getModel().getCategoriaAt(listadoCategoria.getSelectedRow())));
                     Presentacion presentacion = controller.getModel().getPresentacionAt(row, articuloSeleccionado);
+                    mostrarDatosPresentacion(presentacion);
+                } else {
+                    System.out.println("No se ha seleccionado ninguna presentacion.");
                 }
             }
         });
 
-        CategoriaguardarButton.addActionListener(new ActionListener() {
+        categoriaLimpiarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
@@ -196,7 +205,7 @@ public class InventarioView {
         });
 
 
-        CategoriabuscarButton.addActionListener(new ActionListener() {
+        subCategoriaLimpiarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
@@ -204,7 +213,7 @@ public class InventarioView {
                     categoria.setID(CategoriaIDBuscarTxtField.getText());
                     categoria.setNombre(CategorianombreBuscarTxtField.getText());
                    // controller.searchCategoria(categoria);
-                    llenarCamposdeTexto(categoria);
+                    llenarCamposdeTextoCategoria(categoria);
                 }catch (Exception ex){
                     JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
                 }
@@ -213,7 +222,9 @@ public class InventarioView {
         categoriaLimpiarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CategoriacodigoTxtField.setText("");
+                CategorianombreTxtField.setText("");
+                CategoriadescripcionTxtField.setText("");
             }
         });
         subCategoriaLimpiarButton.addActionListener(new ActionListener() {
@@ -276,10 +287,50 @@ public class InventarioView {
 
     }
 
-    private void llenarCamposdeTexto(Categoria e) {
+    //----------------------------------------------------------------
+    //para llenar los campos de texto con la info
+    private void llenarCamposdeTextoCategoria(Categoria e) {
         CategoriacodigoTxtField.setText(e.getID());
         CategorianombreTxtField.setText(e.getNombre());
-        CategoriadescripcionTxtField.setText(String.valueOf(e.getDescripcion()));
+        CategoriadescripcionTxtField.setText(e.getDescripcion());
+    }
+    private void llenarCamposdeTextoSubCategoria(SubCategoria e) {
+        SubCategoriacodigoTxtField.setText(e.getID());
+        SubCategorianombreTxtField.setText(e.getNombre());
+        SubCategoriadescripcionTxtField.setText(e.getDescripcion());
+    }
+    private void llenarCamposdeTextoArticulo(Articulo e) {
+        ArticuloCodigoTxtField.setText(e.getId());
+        ArticuloMarcaTxtField.setText(e.getMarca());
+        ArticuloNombreTxtField.setText(e.getNombre());
+        ArticuloDescripcionTxtField.setText(e.getDescripcion());
+    }
+    //----------------------------------------------------------------
+    //----------------------------------------------------------------
+    //para llenar los campos de texto con la informacion del objeto seleccionado del table
+    private void mostrarDatosCategoria(Categoria cat){
+        CategoriacodigoTxtField.setText(cat.getID());
+        CategorianombreTxtField.setText(cat.getNombre());
+        CategoriadescripcionTxtField.setText(cat.getDescripcion());
+        SubCategoriacategoriaTxtField.setText(cat.getID());
+        ArticuloCategoriaTxtField.setText(cat.getID());
+    }
+    private void mostrarDatosSubCategoria(SubCategoria cat){
+        SubCategoriacodigoTxtField.setText(cat.getID());
+        SubCategorianombreTxtField.setText(cat.getNombre());
+        ArticuloSubCategoriaTxtField.setText(cat.getID());
+        SubCategoriadescripcionTxtField.setText(cat.getDescripcion());
+    }
+    private void mostrarDatosArticulo(Articulo art){
+        ArticuloCodigoTxtField.setText(art.getId());
+        ArticuloMarcaTxtField.setText(art.getMarca());
+        ArticuloNombreTxtField.setText(art.getNombre());
+        ArticuloDescripcionTxtField.setText(art.getDescripcion());
+    }
+    private void mostrarDatosPresentacion(Presentacion p){
+        PresentacionIDTxtField.setText(p.getId());
+        PresentacioncapacidadCantidadTxtField.setText(p.getCantidad());
+        PresentacionUnidadTxtField.setText(p.getUnidad());
     }
 
     public JPanel getMainpanel() {

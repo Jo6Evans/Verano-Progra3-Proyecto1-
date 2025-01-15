@@ -122,10 +122,24 @@ public class Model {
            return false;
        }
     }
-    public boolean eliminarSubCategoria(SubCategoria subCategoria) throws Exception {
-        return false;
+    public void eliminarSubCategoria(Categoria categoria, SubCategoria subCategoria) {
+        try {
+            data.deleteSubCategoria(categoria, subCategoria);
+        } catch (Exception e) {
+            System.out.println("La subcategoría tiene artículos asociados");
+        }
+    }
+    public void eliminarArticulo(SubCategoria subCategoria, Articulo articulo) {
+        try {
+            data.deleteArticulo(subCategoria, articulo);
+        } catch (Exception e) {
+            System.out.println("El artículo tiene presentaciones asociadas");
+        }
     }
 
+    public void eliminarPresentacion(Articulo articulo, Presentacion presentacion) {
+        data.deletePresentacion(articulo, presentacion);
+    }
 
     //SEARCH
     public List<Categoria> searchC(String id, String nombre){
@@ -221,7 +235,36 @@ public class Model {
         return presentaciones;
     }
 
+    //a ver si esto sirve
+    private Categoria categoriaSeleccionada;
+    private SubCategoria subCategoriaSeleccionada;
+    private Articulo articuloSeleccionado;
+    private Presentacion presentacionSeleccionada;
 
+    public void setCategoriaSeleccionada(Categoria categoria) {
+        this.categoriaSeleccionada = categoria;
+    }
+    public Categoria getCategoriaSeleccionada() {
+        return categoriaSeleccionada;
+    }
+    public void setSubCategoriaSeleccionada(SubCategoria subCategoria) {
+        this.subCategoriaSeleccionada = subCategoria;
+    }
+    public SubCategoria getSubCategoriaSeleccionada() {
+        return subCategoriaSeleccionada;
+    }
+    public void setArticuloSeleccionado(Articulo articulo) {
+        this.articuloSeleccionado = articulo;
+    }
+    public Articulo getArticuloSeleccionado() {
+        return articuloSeleccionado;
+    }
+    public void setPresentacionSeleccionada(Presentacion presentacion) {
+        this.presentacionSeleccionada = presentacion;
+    }
+    public Presentacion getPresentacionSeleccionada() {
+        return presentacionSeleccionada;
+    }
 
 
 

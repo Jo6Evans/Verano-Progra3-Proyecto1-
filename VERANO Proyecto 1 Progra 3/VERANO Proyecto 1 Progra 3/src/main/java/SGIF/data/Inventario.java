@@ -1,6 +1,10 @@
 package SGIF.data;
 
+import SGIF.logic.Articulo;
 import SGIF.logic.Categoria;
+import SGIF.logic.Presentacion;
+import SGIF.logic.SubCategoria;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,12 +96,33 @@ public class Inventario {
 
     public void deleteCategoria(Categoria categoria) throws Exception {
         if (!categoria.getSubCategoria().isEmpty()){
-            throw new Exception("El categoria tiene subcategorias");
+            throw new Exception("La categoria tiene subcategorias asociadas");
         }else{
             getCategorias().remove(categoria);
 
         }
     }
+    public void deleteSubCategoria(Categoria categoria, SubCategoria subCategoria) throws Exception {
+        if (!subCategoria.getListadoArticulos().isEmpty()) {
+            throw new Exception("La subcategoría tiene artículos asociados");
+        } else {
+            categoria.getSubCategoria().remove(subCategoria);
+            setCategorias(getCategorias());
+        }
+    }
 
+    public void deleteArticulo(SubCategoria subCategoria, Articulo articulo) throws Exception {
+        if (!articulo.getPresentacion().isEmpty()) {
+            throw new Exception("El artículo tiene presentaciones asociadas");
+        } else {
+            subCategoria.getListadoArticulos().remove(articulo);
+            setCategorias(getCategorias());
+        }
+    }
+
+    public void deletePresentacion(Articulo articulo, Presentacion presentacion) {
+        articulo.getPresentacion().remove(presentacion);
+        setCategorias(getCategorias());
+    }
 
 }

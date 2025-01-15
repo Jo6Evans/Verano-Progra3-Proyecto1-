@@ -200,7 +200,8 @@ public class ReadXMLFile {
         return l;
     }
 
-//    public List<Categoria> parseXML() throws ParserConfigurationException, IOException, SAXException {
+
+        //    public List<Categoria> parseXML() throws ParserConfigurationException, IOException, SAXException {
 //        List<Categoria> listaCategorias = new ArrayList<>();
 //        try {
 //            // Configuracion del parser

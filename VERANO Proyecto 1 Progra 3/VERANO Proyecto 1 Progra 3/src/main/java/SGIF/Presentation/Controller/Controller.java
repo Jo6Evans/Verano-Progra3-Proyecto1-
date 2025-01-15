@@ -6,8 +6,10 @@ import SGIF.Presentation.Controller.Controller.View.InventarioView;
 import SGIF.data.Inventario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;*/
+
 import java.util.ArrayList;
 import java.util.List;
+
 import SGIF.Presentation.Model.*;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.Presentation.View.InventarioView;
@@ -78,8 +80,67 @@ public class Controller {
     }
 
 
-}
+    public Articulo obtenerArticuloSeleccionado() {
+        return model.getArticuloSeleccionado();
+    }
 
+    public void seleccionarPresentacion(Presentacion presentacion) {
+        model.setPresentacionSeleccionada(presentacion);
+    }
+
+    public Presentacion obtenerPresentacionSeleccionada() {
+        return model.getPresentacionSeleccionada();
+    }
+
+
+    public void eliminarCategoria(Categoria categoriaSeleccionada) throws Exception {
+        try {
+            model.eliminarCategoria(categoriaSeleccionada);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public void eliminarSubCategoria(SubCategoria subCategoriaSeleccionada) throws Exception {
+        try {
+            model.eliminarSubCategoria(obtenerCategoriaSeleccionada(), subCategoriaSeleccionada);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public void eliminarArticulo(Articulo articuloSeleccionado) throws Exception {
+        try {
+            model.eliminarArticulo(obtenerSubCategoriaSeleccionada(), articuloSeleccionado);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public void eliminarPresentacion(Presentacion presentacionSeleccionada) throws Exception {
+        model.eliminarPresentacion(obtenerArticuloSeleccionado(), presentacionSeleccionada);
+    }
+
+    public void seleccionarCategoria(Categoria categoria) {
+        model.setCategoriaSeleccionada(categoria);
+    }
+
+    public Categoria obtenerCategoriaSeleccionada() {
+        return model.getCategoriaSeleccionada();
+    }
+
+    public void seleccionarSubCategoria(SubCategoria subCategoria) {
+        model.setSubCategoriaSeleccionada(subCategoria);
+    }
+
+    public SubCategoria obtenerSubCategoriaSeleccionada() {
+        return model.getSubCategoriaSeleccionada();
+    }
+
+    public void seleccionarArticulo(Articulo articulo) {
+        model.setArticuloSeleccionado(articulo);
+    }
+}
 
 /// Controller, esta un JTabble porque supuestamente asi se puede iniciar pero no esta sirviendo (ProyectoSISE)
 /// EL start() es para iniciar el VIEW en el main.

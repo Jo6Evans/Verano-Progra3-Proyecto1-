@@ -28,11 +28,11 @@
 					<nombre>Adhesivo Prisma</nombre>
 					<Descripcion>Adhesivo Prisma 401</Descripcion>
 					<presentaciones>
-						<presentacion id="1">
+						<presentacion id="3">
 							<unidad>ml</unidad>
 							<cantidad>75</cantidad>
 						</presentacion>
-						<presentacion id="2">
+						<presentacion id="4">
 							<unidad>ml</unidad>
 							<cantidad>175</cantidad>
 						</presentacion>
@@ -49,15 +49,15 @@
 					<nombre>Anticorrosivo Maxicoat</nombre>
 					<Descripcion>Anticorrosivo Maxicoat 9660</Descripcion>
 					<presentaciones>
-						<presentacion id="1">
+						<presentacion id="5">
 							<unidad>ml</unidad>
 							<cantidad>250</cantidad>
 						</presentacion>
-						<presentacion id="2">
+						<presentacion id="6">
 							<unidad>gl</unidad>
 							<cantidad>0.5</cantidad>
 						</presentacion>
-						<presentacion id="3">
+						<presentacion id="7">
 							<unidad>gl</unidad>
 							<cantidad>1</cantidad>
 						</presentacion>
@@ -74,7 +74,7 @@
 					<nombre>Silicon Alta Temperatura</nombre>
 					<Descripcion>Silicon Alta Temperatura 32394</Descripcion>
 					<presentaciones>
-						<presentacion id="1">
+						<presentacion id="8">
 							<unidad>gr</unidad>
 							<cantidad>375</cantidad>
 						</presentacion>
@@ -99,19 +99,19 @@
 						Manerales ergonómicos de gran confort. • Protección al sobrecalentamiento.
 					</Descripcion>
 					<presentaciones>
-						<presentacion id="1">
+						<presentacion id="9">
 							<unidad>pulgada</unidad>
 							<cantidad>4 1/2</cantidad>
 						</presentacion>
-						<presentacion id="2">
+						<presentacion id="10">
 							<unidad>pulgada</unidad>
 							<cantidad>5</cantidad>
 						</presentacion>
-						<presentacion id="3">
+						<presentacion id="11">
 							<unidad>pulgada</unidad>
 							<cantidad>7</cantidad>
 						</presentacion>
-						<presentacion id="4">
+						<presentacion id="12">
 							<unidad>pulgada</unidad>
 							<cantidad>9</cantidad>
 						</presentacion>
@@ -130,11 +130,11 @@
 						Circuito de protección de batería.
 					</Descripcion>
 					<presentaciones>
-						<presentacion id="1">
+						<presentacion id="13">
 							<unidad>pulgada</unidad>
 							<cantidad>3/8</cantidad>
 						</presentacion>
-						<presentacion id="2">
+						<presentacion id="14">
 							<unidad>pulgada</unidad>
 							<cantidad>1/2</cantidad>
 						</presentacion>
@@ -154,7 +154,7 @@
 					<nombre>Esmeriladora Angular Neumatica</nombre>
 					<Descripcion>Esmeriladora Angular Neumatica</Descripcion>
 					<presentaciones>
-						<presentacion>
+						<presentacion id ="15">
 							<unidad>pulgada</unidad>
 							<cantidad>4 1/2</cantidad>
 						</presentacion>
@@ -171,11 +171,11 @@
 					<nombre>Cople y conector para manguera</nombre>
 					<Descripcion/>
 					<presentaciones>
-						<presentacion>
+						<presentacion id = "16">
 							<unidad>pulgada</unidad>
 							<cantidad>1/2</cantidad>
-						</presentacion>
-						<presentacion>
+						</presentacion >
+						<presentacion id = "17">
 							<unidad>pulgada</unidad>
 							<cantidad>3/4</cantidad>
 						</presentacion>
@@ -190,20 +190,20 @@
 				corrosivos.
 			</descripcion>
 			<listado>
-				<articulo ID="">
+				<articulo ID="40000">
 					<marca>Coleman</marca>
 					<nombre>Manguera 12 pies</nombre>
 					<Descripcion>Manguera de neopreno 12 pies de largo Conector macho y hembra</Descripcion>
 					<presentaciones>
-						<presentacion>
+						<presentacion id = "18">
 							<unidad>pulgada</unidad>
 							<cantidad>1/4</cantidad>
 						</presentacion>
-						<presentacion>
+						<presentacion id = "19">
 							<unidad>pulgada</unidad>
 							<cantidad>1/2</cantidad>
 						</presentacion>
-						<presentacion>
+						<presentacion id = "20">
 							<unidad>pulgada</unidad>
 							<cantidad>3/8</cantidad>
 						</presentacion>
