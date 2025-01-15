@@ -50,9 +50,10 @@ public class Model {
         return this.articulos;
        // fireTableDataChanged();
     }
-    public void cargarPresentaciones(Articulo articuloSeleccionado) {
+    public List<Presentacion> cargarPresentaciones(Articulo articuloSeleccionado) {
         this.presentaciones = articuloSeleccionado.getPresentacion();
       //  fireTableDataChanged();
+        return this.presentaciones;
     }
 //    public void setCategorias(List<Categoria> categorias) {
 //        this.categorias = categorias;

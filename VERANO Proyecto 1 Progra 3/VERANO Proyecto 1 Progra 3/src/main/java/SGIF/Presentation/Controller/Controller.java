@@ -59,9 +59,8 @@ public class Controller {
     // Metodo para obtener el modelo de presentaciones
     public AbstractTableModel getModelPresentaciones(Articulo articuloSeleccionado) {
         // Cargamos las presentaciones correspondientes al articulo seleccionado
-       // return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado););
-        return null;
-    }
+       return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado));
+           }
 //    public void searchCategoria(String id, String nombre) {
 //        model.setCategorias(model.getCategorias());
 //        model.search(buscarCategoria);

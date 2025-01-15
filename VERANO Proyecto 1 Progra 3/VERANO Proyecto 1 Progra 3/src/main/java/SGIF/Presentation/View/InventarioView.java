@@ -1,8 +1,6 @@
 package SGIF.Presentation.View;
 
 import SGIF.Presentation.Controller.Controller;
-import SGIF.Presentation.Model.CategoriaTableModel;
-import SGIF.Presentation.Model.SubCategoriaTableModel;
 import SGIF.logic.Articulo;
 import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;
@@ -86,6 +84,8 @@ public class InventarioView {
     private JPanel articuloPanel;
     private JPanel SubCategoriaPanel;
     private JPanel ArticuloPanel;
+    private JLabel PresentacionUnidadLabel;
+    private JTextField PresentacionUnidadTxtField;
 
     private Controller controller;
 
