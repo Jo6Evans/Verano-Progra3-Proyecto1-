@@ -234,7 +234,41 @@ public class InventarioView {
                 PresentacioncapacidadCantidadTxtField.setText("");
             }
         });
+        CategoriabuscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    Categoria categoria = new Categoria();
+                    controller.searchCategoria(SubCategoriaIDBuscarTxtField.getText(), SubCategorianombreBuscarTxtField.getText());
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        SubCategoriabuscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    controller.searchSubcategoria(SubCategoriaIDBuscarTxtField.getText(),SubCategorianombreBuscarTxtField.getText());
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        ArticulobuscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    controller.searchArticulo(ArticuloIDBusquedaTxtField.getText(), ArticulonombreBusquedaTxtField.getText());
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+
     }
+
     private void llenarCamposdeTexto(Categoria e) {
         CategoriacodigoTxtField.setText(e.getID());
         CategorianombreTxtField.setText(e.getNombre());

@@ -21,7 +21,7 @@ public class Model {
     //llenar las columnas de las tablas
     private List<SubCategoria> subcategorias;
     private List<Articulo> articulos;
-
+    private List<Categoria> categorias;
     private List<Presentacion> presentaciones;
     public void cargarArchivo() {
         data.LoadXML();
@@ -38,6 +38,39 @@ public class Model {
         this.subcategorias = categoriaSeleccionada.getSubCategoria();
         return this.subcategorias;
     }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+
+    public void setSubCategorias(List<SubCategoria> subcategoria) {
+        this.subcategorias = subcategoria;
+
+    }
+
+    public List<SubCategoria> getSubcategorias() {
+        return subcategorias;
+    }
+
+    public List<Articulo> getArticulos() {
+        return articulos;
+    }
+
+    public void setArticulos(List<Articulo> articulos) {
+        this.articulos = articulos;
+
+    }
+    public List<Presentacion> getPresentaciones() {
+        return presentaciones;
+    }
+
+    public void setPresentaciones(List<Presentacion> presentaciones) {
+        this.presentaciones = presentaciones;
+
+    }
+
+
     public List<Articulo> cargarArticulos(SubCategoria subcategoriaSeleccionada) {
         this.articulos=subcategoriaSeleccionada.getListadoArticulos();
         return this.articulos;
@@ -101,6 +134,53 @@ public class Model {
     public boolean eliminarSubCategoria(SubCategoria subCategoria) throws Exception {
         return false;
     }
+
+
+    //SEARCH
+    public List<Categoria> searchC(String id, String nombre){
+        return data.getCategorias().stream()
+                .filter(i -> (id == null || i.getID().contains(id)) &&
+                        (nombre == null || i.getNombre().contains(nombre)))
+                .sorted(Comparator.comparing(Categoria::getNombre))
+                .collect(Collectors.toList());
+    }
+
+
+    public List<SubCategoria> searchSub(String id, String nombre) {
+        List<SubCategoria> subCategoriasEncontradas = new ArrayList<>();
+        for (Categoria categoria : categorias) {
+            for (SubCategoria subCategoria : categoria.getSubCategoria()) {
+                if (subCategoria.getNombre().equalsIgnoreCase(id) || subCategoria.getNombre().equalsIgnoreCase(nombre)) {
+                    subCategoriasEncontradas.add(subCategoria);
+                }
+            }
+        }
+        return subCategoriasEncontradas;
+    }
+
+    public List<Articulo> searchArt(String id, String nombre) {
+        List<Articulo> articulosEncontradas = new ArrayList<>();
+        for (SubCategoria subCategoria : subcategorias) {
+            for (Articulo articulo : subCategoria.getListadoArticulos()) {
+                if (articulo.getNombre().equalsIgnoreCase(id) || articulo.getNombre().equalsIgnoreCase(nombre)) {
+                    articulosEncontradas.add(articulo);
+                }
+            }
+        }
+        return articulosEncontradas;
+    }
+
+    /*public List<Presentacion> searchPrt(String id, String nombre) {
+        List<Presentacion> presentEncontradas = new ArrayList<>();
+        for (Articulo articulos : articulos) {
+            for (Presentacion presentacion : articulos.getPresentacion()) {
+                if (presentacion.getNombre().equalsIgnoreCase(id) || presentacion.getNombre().equalsIgnoreCase(nombre)) {
+                    presentEncontradas.add(presentacion);
+                }
+            }
+        }
+        return presentEncontradas;
+    }*/
 }
 
 /// MODEL

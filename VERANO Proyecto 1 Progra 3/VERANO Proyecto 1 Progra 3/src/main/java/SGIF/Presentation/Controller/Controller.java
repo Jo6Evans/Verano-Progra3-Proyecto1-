@@ -55,6 +55,22 @@ public class Controller {
         return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado));
     }
 
+    //SEARCH
+    public void searchCategoria(String id, String nombre) {
+        model.setCategorias(model.getCategorias());
+        model.searchC(id, nombre);
+    }
+
+    public void searchSubcategoria(String id, String nombre) {
+        model.setSubCategorias(model.getSubcategorias());
+        model.searchSub(id, nombre);
+    }
+
+    public void searchArticulo(String id, String nombre) {
+        model.setArticulos(model.getArticulos());
+        model.searchArt(id, nombre);
+    }
+
 
 }
 
