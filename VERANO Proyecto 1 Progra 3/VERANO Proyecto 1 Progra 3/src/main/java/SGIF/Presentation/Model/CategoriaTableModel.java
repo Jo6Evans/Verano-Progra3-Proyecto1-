@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class CategoriaTableModel extends AbstractTableModel {
-    private final String[] columnNames = {"ID", "Nombre"};
+    private final String[] columnNames = {"ID", "Nombre","Descripcion"};
     private final List<Categoria> categorias;
 
     public CategoriaTableModel(List<Categoria> categorias) {
@@ -28,6 +28,7 @@ public class CategoriaTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0: return categoria.getID();
             case 1: return categoria.getNombre();
+            case 2: return categoria.getDescripcion();
             default: return null;
         }
     }

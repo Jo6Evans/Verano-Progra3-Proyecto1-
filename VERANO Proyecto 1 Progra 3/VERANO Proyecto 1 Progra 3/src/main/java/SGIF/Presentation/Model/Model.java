@@ -6,14 +6,17 @@ import SGIF.logic.Categoria;
 import SGIF.logic.Presentacion;
 import SGIF.logic.SubCategoria;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /// AQUI VA UN MODEL COMO EL DEL LABORATORIO 05
 
-public class Model extends AbstractTableModel {
+public class Model {
     private Inventario data = new Inventario();
     //llenar las columnas de las tablas
     private String[] columnasCategorias = {"Codigo", "Nombre", "Descripcion"};
@@ -34,110 +37,82 @@ public class Model extends AbstractTableModel {
     }
     public List<SubCategoria> cargarSubCategorias(Categoria categoriaSeleccionada) {
         this.subcategorias = categoriaSeleccionada.getSubCategoria();
-        if (subcategorias != null && !subcategorias.isEmpty()) {
-            fireTableDataChanged();
-        } else {
-            System.out.println("No se han encontrado subcategorías.");
-        }
+//        if (subcategorias != null && !subcategorias.isEmpty()) {
+//           fireTableDataChanged();
+//        } else {
+//            System.out.println("No se han encontrado subcategorías.");
+//        }
 
         return this.subcategorias;
     }
-    public void cargarArticulos(SubCategoria subcategoriaSeleccionada) {
+    public List<Articulo> cargarArticulos(SubCategoria subcategoriaSeleccionada) {
         this.articulos=subcategoriaSeleccionada.getListadoArticulos();
-        fireTableDataChanged();
+        return this.articulos;
+       // fireTableDataChanged();
     }
     public void cargarPresentaciones(Articulo articuloSeleccionado) {
         this.presentaciones = articuloSeleccionado.getPresentacion();
-        fireTableDataChanged();
+      //  fireTableDataChanged();
     }
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
-        fireTableDataChanged();
+//    public void setCategorias(List<Categoria> categorias) {
+//        this.categorias = categorias;
+//        fireTableDataChanged();
+//    }
+    Presentacion guardarPresentacion(Presentacion presentacion) {
+        for (Presentacion p : this.presentaciones) {
+            if (p.getId().equals(presentacion.getId())) {
+                return null;
+            }
+        }
+        presentaciones.add(presentacion);
+        //fireTableDataChanged();
+        return presentacion;
     }
-
+    public Categoria searchCategoria(String id, String nom){
+        for(Categoria cat: categorias){
+            if(data.getCategorias().get(0).getID().equals(id) || data.getCategorias().get(0).getNombre().equals(nom)){
+                categorias.add(cat);
+            }
+        }
+        return null;
+//        return data.getCategorias().stream()
+//                .filter(i->i.getNombre().contains(e.getNombre()))
+//                .sorted(Comparator.comparing(Categoria::getNombre))
+//                .collect(Collectors.toList());
+    }
     public void cargarArchivo() {
         data.LoadXML();
     }
 
-    @Override
-    public int getRowCount() { //categorias
-       if(categorias != null) {
-           return categorias.size();
-       }else if(subcategorias != null) {
-           return subcategorias.size();
-       }else if(articulos != null) {
-           return articulos.size();
-       }else if(presentaciones != null) {
-           return presentaciones.size();
-       }
-       return 0;
-    }
-    @Override
-    public String getColumnName(int columna) {
-        if(categorias != null) {
-            return columnasCategorias[columna];
-        }else if(subcategorias != null) {
-            return columnasSubCategorias[columna];
-        }else if(articulos != null) {
-            return columnasArticulos[columna];
-        }else if(presentaciones != null) {
-            return columnasPresentaciones[columna];
-        }
-        return null;
+    private enum TipoModelo {
+        CATEGORIA,
+        SUBCATEGORIA,
+        ARTICULO,
+        PRESENTACION,
+        NINGUNO
     }
 
-    @Override
-    public int getColumnCount() {
-        if(categorias != null) {
-            return columnasCategorias.length;
-        }else if(subcategorias != null) {
-            return columnasSubCategorias.length;
-        }else if(articulos != null) {
-            return columnasArticulos.length;
-        }else if(presentaciones != null) {
-            return columnasPresentaciones.length;
-        }
-        return 0;
+    private TipoModelo getTipoModeloActivo() {
+        if (categorias != null) return TipoModelo.CATEGORIA;
+        if (subcategorias != null) return TipoModelo.SUBCATEGORIA;
+        if (articulos != null) return TipoModelo.ARTICULO;
+        if (presentaciones != null) return TipoModelo.PRESENTACION;
+        return TipoModelo.NINGUNO;
     }
 
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        if (categorias != null) {
-            Categoria categoria = categorias.get(rowIndex);
-            switch (columnIndex) {
-                case 0: return categoria.getID();
-                case 1: return categoria.getNombre();
-                case 2: return categoria.getDescripcion();
-                default: return null;
-            }
-        } else if (subcategorias != null) {
-            SubCategoria subCategoria = subcategorias.get(rowIndex);
-            switch (columnIndex) {
-                case 0: return subCategoria.getID();
-                case 1: return subCategoria.getNombre();
-                case 2: return subCategoria.getDescripcion();
-                default: return null;
-            }
-        } else if (articulos != null) {
-            Articulo articulo = articulos.get(rowIndex);
-            switch (columnIndex) {
-                case 0: return articulo.getId();
-                case 1: return articulo.getMarca();
-                case 2: return articulo.getNombre();
-                case 3: return articulo.getDescripcion();
-                default: return null;
-            }
-        } else if (presentaciones != null) {
-            Presentacion presentacion = presentaciones.get(rowIndex);
-            switch (columnIndex) {
-                case 0: return presentacion.getId();
-                case 1: return presentacion.getUnidad();
-                case 2: return presentacion.getCantidad();
-                default: return null;
-            }
+    private String[] getColumnasActivas() {
+        switch (getTipoModeloActivo()) {
+            case CATEGORIA: return columnasCategorias;
+            case SUBCATEGORIA: return columnasSubCategorias;
+            case ARTICULO: return columnasArticulos;
+            case PRESENTACION: return columnasPresentaciones;
+            default: return new String[0];
         }
-        return null;
     }
+
+
+
+
     public Categoria getCategoriaAt(int rowIndex){
         return data.getCategorias().get(rowIndex);
     }
@@ -150,22 +125,6 @@ public class Model extends AbstractTableModel {
     public Presentacion getPresentacionAt(int rowIndex, Articulo articuloSeleccionado){
         return articuloSeleccionado.getPresentacion().get(rowIndex);
     }
-    public void actualizarDatosCategorias(List<Categoria> nuevasCategorias) {
-        data.setCategorias(nuevasCategorias);
-        fireTableDataChanged();  // Notifica a la vista que los datos han cambiado en el Table
-    }
-    public void actualizarDatosSubCategorias(List<SubCategoria> nuevasSubCategorias, Categoria categoriaSeleccionada) {
-        categoriaSeleccionada.setSubcategorias(nuevasSubCategorias);
-        fireTableDataChanged();
-    }
-    public void actualizarDatosArticulos(List<Articulo> nuevasArticulos, SubCategoria subCategoriaSeleccionada) {
-        subCategoriaSeleccionada.setListadoArticulos(nuevasArticulos);
-        fireTableDataChanged();
-    }
-    public void actualizarDatosPresentaciones(List<Presentacion> nuevasPresentaciones, Articulo articuloSeleccionado) {
-        articuloSeleccionado.setPresentacion(nuevasPresentaciones);
-        fireTableDataChanged();
-    }
 }
 
 /// MODEL
@@ -173,6 +132,14 @@ public class Model extends AbstractTableModel {
 /// La idea es que los tables agarren la informacion y se pongan sus valores pero no funca jaja
 
 /*
+    guardar x4
+    modificar x4
+    eliminar x4
+    mostrar x4
+    buscar x4
+
+
+
     private Inventario inventario;
     private JTable tablaCategoria = new JTable();
 

@@ -7,9 +7,7 @@ import SGIF.data.Inventario;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;*/
 
-import SGIF.Presentation.Model.CategoriaTableModel;
-import SGIF.Presentation.Model.Model;
-import SGIF.Presentation.Model.SubCategoriaTableModel;
+import SGIF.Presentation.Model.*;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.Presentation.View.InventarioView;
 import SGIF.logic.Articulo;
@@ -46,7 +44,7 @@ public class Controller {
 
     }
 
-    // Método para obtener el modelo de subcategorías
+    // Metodo para obtener el modelo de subcategorías
     public AbstractTableModel getModelSubCategorias(Categoria categoriaSeleccionada) {
         // Cargamos las subcategorias según la categoria seleccionada
         return new SubCategoriaTableModel(model.cargarSubCategorias(categoriaSeleccionada));
@@ -55,34 +53,19 @@ public class Controller {
     // Método para obtener el modelo de artículos
     public AbstractTableModel getModelArticulos(SubCategoria subCategoriaSeleccionada) {
         // Cargamos los articulos segun la subcategoria seleccionada
-        model.cargarArticulos(subCategoriaSeleccionada);
-        return model;
+        return new ArticuloTableModel(model.cargarArticulos(subCategoriaSeleccionada));
     }
 
-    // Método para obtener el modelo de presentaciones
+    // Metodo para obtener el modelo de presentaciones
     public AbstractTableModel getModelPresentaciones(Articulo articuloSeleccionado) {
         // Cargamos las presentaciones correspondientes al articulo seleccionado
-        model.cargarPresentaciones(articuloSeleccionado);
-        return model;
+       // return new PresentacionTableModel(model.cargarPresentaciones(articuloSeleccionado););
+        return null;
     }
-
-
-    public Categoria getCategoriaAt(int rowIndex) {
-        return model.getCategorias().get(rowIndex); // Cambia 'data' por el nombre de tu lista de categorías
-    }
-
-    public SubCategoria getSubCategoriaAt(int rowIndex, Categoria categoriaSeleccionada) {
-        return categoriaSeleccionada.getSubCategoria().get(rowIndex);
-    }
-
-    public Articulo getArticuloAt(int rowIndex, SubCategoria subCategoriaSeleccionada) {
-        return subCategoriaSeleccionada.getListadoArticulos().get(rowIndex);
-    }
-
-    public Presentacion getPresentacionAt(int rowIndex, Articulo articuloSeleccionado) {
-        return articuloSeleccionado.getPresentacion().get(rowIndex);
-    }
-
+//    public void searchCategoria(String id, String nombre) {
+//        model.setCategorias(model.getCategorias());
+//        model.search(buscarCategoria);
+//    }
 
 }
 

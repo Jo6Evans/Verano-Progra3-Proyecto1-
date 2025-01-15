@@ -12,6 +12,8 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -107,30 +109,6 @@ public class InventarioView {
             }
         });
 
-
-        ///Esto es lo que estoy usando para ver si funciona la parte del tab y si se muestra pero no muestra ni pio
-        /* controller.actualizarTablaCategorias();
-
-        tabbedPane.setEnabledAt(1, false); // Subcategoría
-        tabbedPane.setEnabledAt(2, false); // Artículo
-
-        listadoCategoria.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                if (e.getClickCount() == 2 && listadoCategoria.getSelectedRow() != -1) {
-                    try {
-                        int selectedIndex = tabbedPane.getSelectedIndex();
-                            // Si se selecciona Categoría
-                            if (selectedIndex == 0) {
-                                tabbedPane.setEnabledAt(1, true);   // Habilitar Subcategoría
-                            }
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            }
-        });*/
         // 1. Tabla de Categorías
 
         listadoCategoria.setModel(controller.getModelCategorias());
@@ -202,6 +180,31 @@ public class InventarioView {
             }
         });
 
+        CategoriaguardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        CategoriabuscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    Categoria categoria = new Categoria();
+                    categoria.setID(CategoriaIDBuscarTxtField.getText());
+                    categoria.setNombre(CategorianombreBuscarTxtField.getText());
+                   // controller.searchCategoria(categoria);
+                    llenarCamposdeTexto(categoria);
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
+    private void llenarCamposdeTexto(Categoria e) {
+        CategoriacodigoTxtField.setText(e.getID());
+        CategorianombreTxtField.setText(e.getNombre());
+        CategoriadescripcionTxtField.setText(String.valueOf(e.getDescripcion()));
     }
 
     public JPanel getMainpanel() {

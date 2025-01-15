@@ -7,7 +7,7 @@ public class Categoria {
     String nombre;
     String descripcion;
     List<SubCategoria> subCategoria;
-
+    public Categoria(){}
     public Categoria(String ID, String nombre, String descripcion, List<SubCategoria> subCategoria) {
         this.ID = ID;
         this.nombre = nombre;
